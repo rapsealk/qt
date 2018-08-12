@@ -6,16 +6,23 @@
 #include <QtMultimediaWidgets/QVideoWidget>
 #include <QPushButton>
 
+#include "mainwidget.h"
+
+/*
 void button_action_01();
 void button_action_02();
 
 static QMediaPlayer *player = NULL, *player2 = NULL;
+*/
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     // MainWindow w;
     // w.show();
+
+    MainWidget *mainWidget = new MainWidget();
+    mainWidget->show();
 
     /*
     QMediaPlayer *player = new QMediaPlayer;
@@ -29,7 +36,10 @@ int main(int argc, char *argv[])
     player->play();
     */
 
-   //  QMediaPlayer *player = new QMediaPlayer;
+    // bool isPlaying01 = true;
+    // bool isPlaying02 = true;
+
+    /*  QMediaPlayer *player = new QMediaPlayer;
     player = new QMediaPlayer;
     QMediaContent *mediaContent = new QMediaContent(QUrl("http://localhost:3000/TT.mp4"));
     player->setMedia(*mediaContent);
@@ -77,13 +87,15 @@ int main(int argc, char *argv[])
 
     player2->setVideoOutput(videoWidget2);
     player2->play();
+    */
 
-    qDebug() << player->availableMetaData() << player->currentMedia().canonicalUrl();
-    qDebug() << player->errorString();
+    // qDebug() << player->availableMetaData() << player->currentMedia().canonicalUrl();
+    // qDebug() << player->errorString();
 
     return a.exec();
 }
 
+/*
 void button_action_01() {
     qDebug() << "Button 01 clicked!";
     if (player->state() != QMediaPlayer::State::PlayingState) {
@@ -101,3 +113,4 @@ void button_action_02() {
         player2->stop();
     }
 }
+*/
