@@ -57,6 +57,21 @@ MainWidget::~MainWidget() {
 
 void MainWidget::clickedSlot() {
     qDebug() << ((QPushButton*) sender())->text();
+    QString buttonTag = ((QPushButton*)sender())->text();
+    QMediaPlayer *player = NULL;
+    if (buttonTag == "Button 01") player = player01;
+    else if (buttonTag == "Button 02") player = player02;
+
+    if (player == NULL) {
+        qDebug() << "Button is null!";
+        return;
+    }
+
+    if (player->state() != QMediaPlayer::State::PlayingState) {
+        player->play();
+    } else {
+        player->pause();
+    }
 }
 
 /*
