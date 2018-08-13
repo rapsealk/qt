@@ -8,7 +8,7 @@ QT       += core gui \                      # default
             widgets \                       # QSplitter, default
             multimedia \                    # QMultimedia
             multimediawidgets \             # QMultimediaWidgets/QVideoWidget
-            webview webenginewidgets        # Google Map
+            #webview webenginewidgets        # Google Map
 
 TARGET = LotteDataCommunicationCompany
 TEMPLATE = app

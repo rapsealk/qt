@@ -4,19 +4,10 @@
 #define WIDTH           700
 #define HEIGHT          700
 
-MainWidget::MainWidget() : webEngineView(new QWebEngineView(this))
+MainWidget::MainWidget()
 {
     this->setWindowIcon(QIcon("://resources/lotte.ico"));
     this->setWindowTitle("Drone GCS");
-
-    /* TODO: Lotte CI
-    this->cipix = QPixmap("://resources/lotte_dc_ci.png");
-    this->cilabel = new QLabel(this);
-    this->cilabel->resize(320, 240);
-    this->cilabel->move(200, -200);
-    this->cilabel->setPixmap(cipix);
-    // this->cilabel->show();
-    */
 
     this->player01 = new QMediaPlayer;
     this->mediaContent01 = new QMediaContent(QUrl(urls[0]));
@@ -77,8 +68,14 @@ MainWidget::MainWidget() : webEngineView(new QWebEngineView(this))
     gridLayout->addWidget(webEngineView, 1, 1, 1, 1);
     */
 
-    // gridLayout->addWidget(cilabel, 2, 0, 1,1);
-    // this->cilabel->showNormal();
+    // TODO: Lotte CI
+    this->cipix = QPixmap("://resources/lotte_dc_ci.png");
+    this->cilabel = new QLabel(this);
+    this->cilabel->resize(320, 240);
+    this->cilabel->setPixmap(cipix);
+    this->cilabel->setAlignment(Qt::AlignBottom | Qt::AlignRight);
+
+    gridLayout->addWidget(cilabel, 1, 1, 1, 1);
 
     this->setLayout(gridLayout);
     this->resize(WIDTH, HEIGHT);
@@ -98,23 +95,3 @@ MainWidget::~MainWidget() {
     // delete button01;
     // delete button02;
 }
-/*
-void MainWidget::clickedSlot() {
-    qDebug() << ((QPushButton*) sender())->text();
-    QString buttonTag = ((QPushButton*)sender())->text();
-    QMediaPlayer *player = NULL;
-    if (buttonTag == "Button 01") player = player01;
-    else if (buttonTag == "Button 02") player = player02;
-
-    if (player == NULL) {
-        qDebug() << "Button is null!";
-        return;
-    }
-
-    if (player->state() != QMediaPlayer::State::PlayingState) {
-        player->play();
-    } else {
-        player->pause();
-    }
-}
-*/

@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>resources/lotte.ico</file>
         <file>resources/googlemap.html</file>
+        <file>resources/lotte_dc_ci.png</file>
     </qresource>
 </RCC>
