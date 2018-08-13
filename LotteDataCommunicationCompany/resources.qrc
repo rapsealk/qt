@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>resources/lotte.ico</file>
+        <file>resources/googlemap.html</file>
     </qresource>
 </RCC>

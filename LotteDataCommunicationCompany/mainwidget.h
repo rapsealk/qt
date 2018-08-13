@@ -3,6 +3,10 @@
 #include <QtMultimediaWidgets/QVideoWidget>
 #include <QGridLayout>
 #include <QPushButton>
+// #include <QPixmap>
+// #include <QLabel>
+#include <QWebEngineView>
+#include <QMessageBox>
 
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
@@ -14,18 +18,26 @@ class MainWidget : public QWidget
 public:
     MainWidget();
     ~MainWidget();
+/*
 private slots:
     void clickedSlot();
+*/
 private:
-    QMediaPlayer *player01, *player02;
-    QMediaContent *mediaContent01, *mediaContent02;
-    char urls[2][36] = {
-        "http://localhost:3000/TT.mp4",
+    QMediaPlayer *player01, *player02, *player03;
+    QMediaContent *mediaContent01, *mediaContent02, *mediaContent03;
+    char urls[3][42] = {
+        "http://localhost:3000/WhyDon'tYouKnow.mp4",
+        "http://localhost:3000/RollerCoaster.mp4",
         "http://localhost:3000/LoveU.mp4"
     };
-    QVideoWidget *videoWidget01, *videoWidget02;
+    QVideoWidget *videoWidget01, *videoWidget02, *videoWidget03;
     QGridLayout *gridLayout;
-    QPushButton *button01, *button02;
+    // QPushButton *button01, *button02;
+
+    // QPixmap cipix;
+    // QLabel *cilabel;
+
+    QWebEngineView *webEngineView;
 };
 
 #endif // MAINWIDGET_H

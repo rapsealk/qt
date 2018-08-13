@@ -9,11 +9,22 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowIcon(QIcon("://resources/lotte.ico"));
     this->setWindowTitle("Lotte Data Communication Company");
 
-    // gridLayout = new QGridLayout(parent);
-    // this->setLayout(gridLayout);
+    /*
+    this->player01 = new QMediaPlayer;
+    this->mediaContent01 = new QMediaContent(QUrl("http://localhost:3000/TT.mp4"));
+    this->player01->setMedia(*mediaContent01);
+    this->player01->setVolume(50);
+    this->videoWidget01 = new QVideoWidget();
+    this->player01->setVideoOutput(videoWidget01);
+    this->player01->play();
+    */
+
+    gridLayout = new QGridLayout(parent);
+    // gridLayout->addWidget(videoWidget01, 0, 0, 1, 1);
+    this->setLayout(gridLayout);
+    this->resize(700, 700);
 
     // splitter = new QSplitter(parent);
-
 }
 
 MainWindow::~MainWindow()

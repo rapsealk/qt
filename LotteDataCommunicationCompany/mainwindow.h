@@ -2,8 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSplitter>
 #include <QGridLayout>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimediaWidgets/QVideoWidget>
 
 namespace Ui {
 class MainWindow;
@@ -20,8 +21,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    // QSplitter *splitter;
     QGridLayout *gridLayout;
+    QMediaPlayer *player01;
+    QMediaContent *mediaContent01;
+    QVideoWidget *videoWidget01;
 };
 
 #endif // MAINWINDOW_H
