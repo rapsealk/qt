@@ -68,6 +68,19 @@ MainWidget::MainWidget()
     gridLayout->addWidget(webEngineView, 1, 1, 1, 1);
     */
 
+    /**
+     * Grid Layout
+     */
+
+    // TODO: Background sample
+    this->bgpix = QPixmap("://resources/sample.PNG");
+    this->bglabel = new QLabel(this);
+
+    this->bglabel->setPixmap(bgpix);
+    this->bglabel->setAlignment(Qt::AlignHCenter);
+    this->bglabel->resize(videoWidget02->width(), videoWidget02->height());
+    gridLayout->addWidget(bglabel, 1, 1, 1, 1);
+
     // TODO: Lotte CI
     this->cipix = QPixmap("://resources/lotte_dc_ci.png");
     this->cilabel = new QLabel(this);
@@ -76,6 +89,15 @@ MainWidget::MainWidget()
     this->cilabel->setAlignment(Qt::AlignBottom | Qt::AlignRight);
 
     gridLayout->addWidget(cilabel, 1, 1, 1, 1);
+
+    // TODO: Drones
+    this->leaderpix = QPixmap("://resources/leader.png");
+    this->leaderpix = this->leaderpix.scaled(32, 32, Qt::AspectRatioMode::KeepAspectRatio);
+    this->leaderlabel = new QLabel(this);
+    this->leaderlabel->setPixmap(leaderpix);
+    // this->leaderlabel->resize(2, 2);
+    gridLayout->addWidget(leaderlabel, 1, 1, 1, 1);
+    this->leaderlabel->move(50, 50);
 
     this->setLayout(gridLayout);
     this->resize(WIDTH, HEIGHT);

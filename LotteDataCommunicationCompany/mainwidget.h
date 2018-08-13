@@ -32,6 +32,14 @@ private:
     QPixmap cipix;
     QLabel *cilabel;
 
+    QPixmap bgpix;
+    QLabel *bglabel;
+
+    QPixmap leaderpix;
+    QLabel *leaderlabel;
+    QPixmap followerpix01, followerpix02;
+    QLabel *followerlabel01, *followerlabel02;
+
     // QWebEngineView *webEngineView;
 };
 

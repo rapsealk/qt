@@ -3,5 +3,8 @@
         <file>resources/lotte.ico</file>
         <file>resources/googlemap.html</file>
         <file>resources/lotte_dc_ci.png</file>
+        <file>resources/sample.PNG</file>
+        <file>resources/follower.png</file>
+        <file>resources/leader.png</file>
     </qresource>
 </RCC>
