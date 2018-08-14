@@ -20,9 +20,23 @@ MainWindow::MainWindow(QWidget *parent) :
     */
 
     gridLayout = new QGridLayout(parent);
+    QLabel *label = new QLabel(this);
+    QLabel *label1 = new QLabel(this);
+    QLabel *label2 = new QLabel(this);
+    QLabel *label3 = new QLabel(this);
+
+    label->setText("a1sdasd");
+    label1->setText("a2sdasd");
+    label2->setText("a3sdasd");
+    label3->setText("a4sdasd");
+
+    gridLayout->addWidget(label, 0, 0, 1, 1);
+    gridLayout->addWidget(label1, 0, 1, 1, 1);
+    gridLayout->addWidget(label2, 1, 0, 1, 1);
+    gridLayout->addWidget(label3, 1, 1, 1, 1);
     // gridLayout->addWidget(videoWidget01, 0, 0, 1, 1);
     this->setLayout(gridLayout);
-    this->resize(700, 700);
+    //this->resize(700, 700);
 
     // splitter = new QSplitter(parent);
 }

@@ -1,4 +1,5 @@
 #include <QWidget>
+#include <QOpenGLWidget>
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimediaWidgets/QVideoWidget>
 #include <QGridLayout>
@@ -12,13 +13,22 @@
 #define MAINWIDGET_H
 
 
-class MainWidget : public QWidget
+class MainWidget : /*public QOpenGLWidget*/ public QWidget
 {
     Q_OBJECT
 public:
     MainWidget();
     ~MainWidget();
+private slots:
+    void clickMoveButton();
+/*
+    void animate();
+protected:
+    void paintEvent(QPaintEvent *event) override;
+*/
 private:
+    // Helper *helper;
+    int elapsed;
     QMediaPlayer *player01, *player02, *player03;
     QMediaContent *mediaContent01, *mediaContent02, *mediaContent03;
     char urls[3][42] = {
@@ -37,9 +47,10 @@ private:
 
     QPixmap leaderpix;
     QLabel *leaderlabel;
-    QPixmap followerpix01, followerpix02;
-    QLabel *followerlabel01, *followerlabel02;
+    QPixmap followerpix;
+    QLabel *followerLabel01, *followerLabel02;
 
+    QPushButton *pushButton;
     // QWebEngineView *webEngineView;
 };
 

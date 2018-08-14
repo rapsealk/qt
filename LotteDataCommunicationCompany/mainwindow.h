@@ -5,6 +5,7 @@
 #include <QGridLayout>
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimediaWidgets/QVideoWidget>
+#include <QLabel>
 
 namespace Ui {
 class MainWindow;

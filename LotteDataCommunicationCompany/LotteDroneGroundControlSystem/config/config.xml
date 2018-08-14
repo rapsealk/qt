@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Lotte Drone Ground Control System</Name>
+    <Version>1.0.0</Version>
+    <Title>Lotte GCS Installer</Title>
+    <Publisher>Lotte Data Communication Company</Publisher>
+    <!--StartMenuDir>Lotte Drone Ground Control System</StartMenuDir-->
+    <TargetDir>@ApplicationDir@/Lotte Drone Ground Control System</TargetDir>
+</Installer>

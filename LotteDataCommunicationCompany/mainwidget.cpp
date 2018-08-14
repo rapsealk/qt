@@ -1,8 +1,8 @@
 #include "mainwidget.h"
 
 #define MEDIA_VOLUME    50
-#define WIDTH           700
-#define HEIGHT          700
+#define ROW_SPAN        1
+#define COL_SPAN        1
 
 MainWidget::MainWidget()
 {
@@ -10,19 +10,19 @@ MainWidget::MainWidget()
     this->setWindowTitle("Drone GCS");
 
     this->player01 = new QMediaPlayer;
-    this->mediaContent01 = new QMediaContent(QUrl(urls[0]));
-    this->player01->setMedia(*mediaContent01);
-    this->player01->setVolume(MEDIA_VOLUME);
+    // this->mediaContent01 = new QMediaContent(QUrl(urls[0]));
+    // this->player01->setMedia(*mediaContent01);
+    // this->player01->setVolume(MEDIA_VOLUME);
 
     this->player02 = new QMediaPlayer;
-    this->mediaContent02 = new QMediaContent(QUrl(urls[1]));
-    this->player02->setMedia(*mediaContent02);
-    this->player02->setVolume(MEDIA_VOLUME);
+    // this->mediaContent02 = new QMediaContent(QUrl(urls[1]));
+    // this->player02->setMedia(*mediaContent02);
+    // this->player02->setVolume(MEDIA_VOLUME);
 
     this->player03 = new QMediaPlayer;
-    this->mediaContent03 = new QMediaContent(QUrl(urls[2]));
-    this->player03->setMedia(*mediaContent03);
-    this->player03->setVolume(MEDIA_VOLUME);
+    // this->mediaContent03 = new QMediaContent(QUrl(urls[2]));
+    // this->player03->setMedia(*mediaContent03);
+    // this->player03->setVolume(MEDIA_VOLUME);
 
     videoWidget01 = new QVideoWidget();
     player01->setVideoOutput(videoWidget01);
@@ -37,9 +37,9 @@ MainWidget::MainWidget()
     player03->play();
 
     gridLayout = new QGridLayout();
-    gridLayout->addWidget(videoWidget01, 0, 0, 1, 1);
-    gridLayout->addWidget(videoWidget02, 0, 1, 1, 1);
-    gridLayout->addWidget(videoWidget03, 1, 0, 1, 1);
+    gridLayout->addWidget(videoWidget01, 0, 0, ROW_SPAN, COL_SPAN);
+    gridLayout->addWidget(videoWidget02, 0, 1, ROW_SPAN, COL_SPAN);
+    gridLayout->addWidget(videoWidget03, 1, 0, ROW_SPAN, COL_SPAN);
 
     // webEngineView->resize(300, 300);
 
@@ -71,36 +71,58 @@ MainWidget::MainWidget()
     /**
      * Grid Layout
      */
+    QGridLayout *mapGridLayout = new QGridLayout();
 
     // TODO: Background sample
     this->bgpix = QPixmap("://resources/sample.PNG");
     this->bglabel = new QLabel(this);
 
+    this->bgpix = this->bgpix.scaled(this->videoWidget02->width(), videoWidget02->height(), Qt::AspectRatioMode::IgnoreAspectRatio);
+
     this->bglabel->setPixmap(bgpix);
     this->bglabel->setAlignment(Qt::AlignHCenter);
-    this->bglabel->resize(videoWidget02->width(), videoWidget02->height());
-    gridLayout->addWidget(bglabel, 1, 1, 1, 1);
+    // this->bglabel->resize(videoWidget02->width(), videoWidget02->height());
+    mapGridLayout->addWidget(bglabel, 0, 0, 0, 0);
+    // gridLayout->addWidget(bglabel, 1, 1, 1, 1);
 
     // TODO: Lotte CI
     this->cipix = QPixmap("://resources/lotte_dc_ci.png");
     this->cilabel = new QLabel(this);
-    this->cilabel->resize(320, 240);
+    //this->cilabel->resize(320, 240);
     this->cilabel->setPixmap(cipix);
     this->cilabel->setAlignment(Qt::AlignBottom | Qt::AlignRight);
 
-    gridLayout->addWidget(cilabel, 1, 1, 1, 1);
+    mapGridLayout->addWidget(cilabel, 0, 0, 0, 0);
+    // gridLayout->addWidget(cilabel, 1, 1, 1, 1);
 
     // TODO: Drones
     this->leaderpix = QPixmap("://resources/leader.png");
     this->leaderpix = this->leaderpix.scaled(32, 32, Qt::AspectRatioMode::KeepAspectRatio);
     this->leaderlabel = new QLabel(this);
+    this->leaderlabel->setMinimumSize(1, 1);
     this->leaderlabel->setPixmap(leaderpix);
-    // this->leaderlabel->resize(2, 2);
-    gridLayout->addWidget(leaderlabel, 1, 1, 1, 1);
+    //this->leaderlabel->setScaledContents(true);
+    // this->leaderlabel->adjustSize();
+    mapGridLayout->addWidget(leaderlabel, 0, 0, 0, 0);
     this->leaderlabel->move(50, 50);
 
+    this->followerpix = QPixmap("://resources/follower.png");
+    this->followerpix = this->followerpix.scaled(32, 32, Qt::AspectRatioMode::KeepAspectRatio);
+    this->followerLabel01 = new QLabel(this);
+    this->followerLabel01->setPixmap(followerpix);
+    mapGridLayout->addWidget(followerLabel01, 0, 0);
+
+    this->followerLabel02 = new QLabel(this);
+    this->followerLabel02->setPixmap(followerpix);
+    mapGridLayout->addWidget(followerLabel02, 1, 1);
+/*
+    this->pushButton = new QPushButton("Move", this);
+    QObject::connect(pushButton, SIGNAL (clicked()), this, SLOT(clickMoveButton()));
+    mapGridLayout->addWidget(pushButton, 1, 1);
+*/
+    gridLayout->addLayout(mapGridLayout, 1, 1, ROW_SPAN, COL_SPAN);
+
     this->setLayout(gridLayout);
-    this->resize(WIDTH, HEIGHT);
 }
 
 MainWidget::~MainWidget() {
@@ -116,4 +138,16 @@ MainWidget::~MainWidget() {
     delete gridLayout;
     // delete button01;
     // delete button02;
+}
+
+void MainWidget::clickMoveButton() {
+    qDebug() << ((QPushButton*) sender())->text();
+    qDebug() << "leaderpix.size: " << this->leaderpix.size();
+    qDebug() << "leaderlabel->size: " << this->leaderlabel->size();
+    qDebug() << "center: " << this->leaderlabel->geometry().center();
+    qDebug() << "topLeft: " << this->leaderlabel->geometry().topLeft();
+    qDebug() << "topRight: " << this->leaderlabel->geometry().topRight();
+    qDebug() << "bottomLeft: " << this->leaderlabel->geometry().bottomLeft();
+    qDebug() << "bottomRight: " << this->leaderlabel->geometry().bottomRight();
+    // this->leaderlabel->move(this->leaderlabel->geometry().center());
 }

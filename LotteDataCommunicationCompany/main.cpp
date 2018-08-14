@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     // w.show();
 
     MainWidget *mainWidget = new MainWidget();
-    mainWidget->show();
+    mainWidget->showMaximized();
 
     return a.exec();
 }
