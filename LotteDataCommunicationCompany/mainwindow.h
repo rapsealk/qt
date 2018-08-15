@@ -6,6 +6,7 @@
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimediaWidgets/QVideoWidget>
 #include <QLabel>
+#include <QScreen>
 #include "mainwidget.h"
 
 namespace Ui {
@@ -26,6 +27,8 @@ private:
     QMediaPlayer *player01;
     QMediaContent *mediaContent01;
     QVideoWidget *videoWidget01;
+
+
 };
 
 #endif // MAINWINDOW_H

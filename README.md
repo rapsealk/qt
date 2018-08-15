@@ -8,3 +8,9 @@
 Qt/{distro}/mingw53_32/bin$ qtenv2
 Qt/{distro}/mingw53_32$ windeployqt PATH_TO_APPLICATION_EXE
 ```
+
+```
+// Build a Qt application with Qt Creator in release.
+Run Qt 64-bit for Desktop (MSVC 2017)
+windeployqt.exe <ReleaseLaunchFile.exe>
+```

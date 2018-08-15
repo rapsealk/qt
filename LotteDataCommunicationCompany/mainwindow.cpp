@@ -20,8 +20,12 @@ MainWindow::MainWindow(QWidget *parent) :
     */
 
     MainWidget *mainwidget = new MainWidget();
+    //QGridLayout *gridLayout = new QGridLayout(this);
+    //gridLayout->setSizeConstraint(QLayout::SizeConstraint::SetDefaultConstraint);
+    //gridLayout->addWidget(mainwidget);
+    //this->setLayout(gridLayout);
     this->setCentralWidget(mainwidget);
-    // ui->gridLayout->addWidget(mainwidget);
+    //ui->gridLayout->addWidget(mainwidget);
     /*
     // gridLayout = new QGridLayout(parent);
     QLabel *label = new QLabel(this);
@@ -44,6 +48,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // splitter = new QSplitter(parent);
     */
+
+    // this->statusBar()->setSizeGripEnabled(false);
+
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect rect = screen->geometry();
+    this->setMinimumSize(rect.width(), rect.height());
+    this->setMaximumSize(rect.width(), rect.height());
+    this->setFixedSize(rect.width(), rect.height());
+
 }
 
 MainWindow::~MainWindow()

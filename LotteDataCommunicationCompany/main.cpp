@@ -8,10 +8,10 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     MainWindow w;
-    w.show();
+    w.showMaximized();
 
-    // MainWidget *mainWidget = new MainWidget();
-    // mainWidget->showMaximized();
+    //MainWidget *mainWidget = new MainWidget();
+    //mainWidget->showMaximized();
 
     return a.exec();
 }

@@ -1,6 +1,6 @@
 #include "mainwidget.h"
 
-#define MEDIA_VOLUME    50
+#define MEDIA_VOLUME    0
 #define ROW_SPAN        1
 #define COL_SPAN        1
 
@@ -10,19 +10,19 @@ MainWidget::MainWidget()
     this->setWindowTitle("Drone GCS");
 
     this->player01 = new QMediaPlayer;
-    // this->mediaContent01 = new QMediaContent(QUrl(urls[0]));
-    // this->player01->setMedia(*mediaContent01);
-    // this->player01->setVolume(MEDIA_VOLUME);
+    this->mediaContent01 = new QMediaContent(QUrl(urls[0]));
+    this->player01->setMedia(*mediaContent01);
+    this->player01->setVolume(MEDIA_VOLUME);
 
     this->player02 = new QMediaPlayer;
-    // this->mediaContent02 = new QMediaContent(QUrl(urls[1]));
-    // this->player02->setMedia(*mediaContent02);
-    // this->player02->setVolume(MEDIA_VOLUME);
+    this->mediaContent02 = new QMediaContent(QUrl(urls[1]));
+    this->player02->setMedia(*mediaContent02);
+    this->player02->setVolume(MEDIA_VOLUME);
 
     this->player03 = new QMediaPlayer;
-    // this->mediaContent03 = new QMediaContent(QUrl(urls[2]));
-    // this->player03->setMedia(*mediaContent03);
-    // this->player03->setVolume(MEDIA_VOLUME);
+    this->mediaContent03 = new QMediaContent(QUrl(urls[2]));
+    this->player03->setMedia(*mediaContent03);
+    this->player03->setVolume(MEDIA_VOLUME);
 
     videoWidget01 = new QVideoWidget();
     player01->setVideoOutput(videoWidget01);
@@ -150,4 +150,10 @@ void MainWidget::clickMoveButton() {
     qDebug() << "bottomLeft: " << this->leaderlabel->geometry().bottomLeft();
     qDebug() << "bottomRight: " << this->leaderlabel->geometry().bottomRight();
     // this->leaderlabel->move(this->leaderlabel->geometry().center());
+}
+
+void MainWidget::resizeEvent(QResizeEvent *event) {
+    qDebug() << "resize!";
+    //this->repaint();
+    //this->gridLayout->update();
 }
