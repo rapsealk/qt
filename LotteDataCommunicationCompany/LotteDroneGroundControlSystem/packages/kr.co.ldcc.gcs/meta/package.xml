@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
     <DisplayName>Ground Control System (GCS)</DisplayName>
-    <Description>Description would be here.</Description>
+    <Description>This component is a main component.</Description>
     <Version>0.1.0-1</Version>
     <ReleaseDate>2018-08-14</ReleaseDate>
-    <License>
+    <!--Name>Ground Control System</Name-->
+    <Licenses>
         <License name="MIT" file="license.txt" />
-    </License>
+    </Licenses>
     <Default>script</Default>
-    <!--Script>installscript.qs</Script>
+    <Script>installscript.qs</Script>
     <UserInterfaces>
-        <UserInterface>page.ui</UserInterface>
-    </UserInterfaces-->
+        <UserInterface>mainwindow.ui</UserInterface>
+    </UserInterfaces>
 </Package>

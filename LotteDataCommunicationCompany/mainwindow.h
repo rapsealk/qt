@@ -6,6 +6,7 @@
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimediaWidgets/QVideoWidget>
 #include <QLabel>
+#include "mainwidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,11 +19,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void addWidget(QWidget *widget, int row, int column, int rowspan, int colspan);
 
 private:
     Ui::MainWindow *ui;
-    QGridLayout *gridLayout;
+    // QGridLayout *gridLayout;
     QMediaPlayer *player01;
     QMediaContent *mediaContent01;
     QVideoWidget *videoWidget01;
